@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Change Password</title>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/changepw.js" defer></script> <!-- Optionally, use a separate JS file -->
+</head>
+<body>
+<section>
+  <form action="/changepw" method="post">
+    <h1>Change Password</h1>
+
+    <div class="inputbox">
+      <ion-icon name="lock-closed-outline"></ion-icon>
+      <input type="password" id="oldPassword" name="oldPassword" required>
+      <label for="">Old Password</label>
+    </div>
+
+    <div class="inputbox">
+      <ion-icon name="lock-closed-outline"></ion-icon>
+      <input type="password" id="newPassword" name="newPassword" required>
+      <label for="">New Password</label>
+    </div>
+
+    <div class="inputbox">
+      <ion-icon name="lock-closed-outline"></ion-icon>
+      <input type="password" id="confirmPassword" name="confirmPassword" required>
+      <label for="">Confirm New Password</label>
+    </div>
+
+    <button id="submit" type="submit">Submit</button>
+    <div class="register">
+      <p><a href="/chat">Back to Chat</a></p>
+    </div>
+  </form>
+</section>
+
+<script th:if="${error}" type="text/javascript">
+  alert([[${error}]]);
+</script>
+
+</body>
+</html>
+
+

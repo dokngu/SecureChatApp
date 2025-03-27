@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Chat Room</title>
+  <link rel="stylesheet" href="/css/chat.css">
+</head>
+<body>
+<div>
+
+  <h2>Welcome to the chat, <!-- username -->
+
+    <span th:if="${user != null}" th:text="${user.username}"></span>
+      <span th:if="${user == null}">User not found</span>
+    </span>
+
+  </h2>
+
+<!--  <a th:href="@{/changepw}">Change password</a> &lt;!&ndash; can only change pw when logged in &ndash;&gt;-->
+<!--  <a href="/logout">Log out</a>-->
+  <div class="header-buttons">
+    <button th:if="${user != null}" th:onclick="location.href='/changepw'">Change password</button>
+    <button th:if="${user != null}" th:onclick="location.href='/logout'">Log out</button>
+  </div>
+</div>
+<div id="chatArea">
+  <ul>
+    <th:block th:each="message : ${messages}">
+      <li>
+        <strong th:text="${message.user.username}"></strong>:
+        <span th:text="${message.message}"></span>
+        <small th:text="${#temporals.format(message.timestamp, 'yyyy-MM-dd HH:mm')}"></small>
+      </li>
+    </th:block>
+  </ul>
+</div>
+
+<form action="/chat/send" method="post">
+  <textarea name="message" placeholder="Type a message" required></textarea>
+  <button type="submit">Send</button>
+</form>
+
+<script> //scroll chat to bottom
+  window.onload = function() {
+    var chatArea = document.getElementById('chatArea');
+    chatArea.scrollTop = chatArea.scrollHeight;
+  };
+
+  document.querySelector('textarea').addEventListener('keydown', function(event) { //send message on pressing Enter
+    if (event.key === 'Enter' && !event.shiftKey) {
+      event.preventDefault();  //prevent new line (default behavior)
+      document.querySelector('form').submit();
+    }
+  });
+
+</script>
+</body>
+</html>

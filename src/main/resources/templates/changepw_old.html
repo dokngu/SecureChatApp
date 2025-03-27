@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Change Password</title>
+</head>
+<body>
+<h1>Change Password</h1>
+
+<form th:action="@{/change-password}" th:object="${passwordChange}" method="POST">
+    <div>
+        <label for="oldPassword">Old Password:</label>
+        <input type="password" id="oldPassword" th:field="*{oldPassword}" required />
+    </div>
+
+    <div>
+        <label for="newPassword">New Password:</label>
+        <input type="password" id="newPassword" th:field="*{newPassword}" required />
+    </div>
+
+    <div>
+        <label for="confirmPassword">Confirm Password:</label>
+        <input type="password" id="confirmPassword" th:field="*{confirmPassword}" required />
+    </div>
+
+    <div>
+        <button type="submit">Change Password</button>
+    </div>
+
+    <!-- Display error messages -->
+    <div th:if="${error}" style="color: red;">
+        <p th:text="${error}"></p>
+    </div>
+
+    <!-- Display success message -->
+    <div th:if="${success}" style="color: green;">
+        <p th:text="${success}"></p>
+    </div>
+</form>
+</body>
+</html>
