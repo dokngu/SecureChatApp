@@ -58,7 +58,7 @@
       password
     }
     
-    if(password == confirmPassword){
+    if(password == confirmPassword && password != "qwerty"){
       const jsonData = JSON.stringify(data);
       fetch('/req/signup', {
         method: 'POST',

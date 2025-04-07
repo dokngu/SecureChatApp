@@ -10,7 +10,7 @@
 </head>
 <body>
 <section>
-  <form action="/changepw" method="post">
+  <form action="/changepw" method="post" onsubmit=return validateForm())>
     <h1>Change Password</h1>
 
     <div class="inputbox">
@@ -40,6 +40,25 @@
 
 <script th:if="${error}" type="text/javascript">
   alert([[${error}]]);
+
+
+    function validateForm() {
+    const newPassword = document.getElementById('newPassword').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+
+    if (newPassword !== confirmPassword) {
+    alert('New password and confirm password do not match');
+    return false;  // Prevent form submission
+  }
+
+
+    if (newPassword.length < 8) {
+    alert('New password must be at least 8 characters long');
+    return false;  // Prevent form submission
+  }
+    return true;
+  }
+
 </script>
 
 </body>

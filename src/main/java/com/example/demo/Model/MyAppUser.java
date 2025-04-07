@@ -20,10 +20,10 @@ public class MyAppUser {
     @NotBlank(message = "Email is required")
     private String email;
 
-    //full disclosure: regex is from ChatGPT. Do you think I am some kind of genius mastermind? I don't.
-    @NotBlank(message = "Password is required")
-    @Pattern(regexp = "^(?=.*[0-9])(?=.*[!@#$%^&*(),.?\":{}|<>])[A-Za-z0-9!@#$%^&*(),.?\":{}|<>]{8,}$",
-            message = "Password must be at least 8 characters long, contain at least one number, and one special character.")
+//    //full disclosure: regex is from ChatGPT. Do you think I am some kind of genius mastermind? I don't.
+//    @NotBlank(message = "Password is required")
+//    @Pattern(regexp = "^(?=.*[0-9])(?=.*[!@#$%^&*(),.?\":{}|<>])[A-Za-z0-9!@#$%^&*(),.?\":{}|<>]{8,}$",
+//            message = "Password must be at least 8 characters long, contain at least one number, and one special character.")
     private String password;
 
     public String getUsername() {

@@ -43,7 +43,7 @@ public class UserController {
         userRepository.save(currentUser);  // Save the updated user to the database
 
         model.addAttribute("success", "Password successfully changed.");
-        return "logout";
+        return "redirect:/chat";
     }
 
 }
